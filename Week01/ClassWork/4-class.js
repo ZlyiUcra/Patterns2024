@@ -1,4 +1,4 @@
-'use strict';
+EXPORT 'use strict';
 
 // Code improved characteristics:
 //   - class with static factories

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // Tasks for rewriting:
 //   - Apply optimizations of computing resources: processor, memory
@@ -35,7 +35,7 @@ class City {
   }
 }
 
-export class CityDataProcessor {
+class CityDataProcessor {
   constructor(data) {
     this.data = data;
     this.cities = [];
@@ -44,12 +44,11 @@ export class CityDataProcessor {
   }
 
   processData() {
-    const lines = this.data.split("\n");
+    const lines = this.data.split('\n');
     lines.shift(); // Remove header
-    // Remove last empty line
 
     for (const line of lines) {
-      const [name, population, area, density, country] = line.trim().split(",");
+      const [name, population, area, density, country] = line.trim().split(',');
       const city = new City(name, population, area, density, country);
       this.cities.push(city);
       this.maxDensity = Math.max(this.maxDensity, city.density);
@@ -99,39 +98,39 @@ processedCities.printCities();
 // Simple unit tests without frameworks
 function testCity() {
   const testCity = new City(
-    "TestCity",
-    "1000000",
-    "100",
-    "10000",
-    "TestCountry"
+    'TestCity',
+    '1000000',
+    '100',
+    '10000',
+    'TestCountry'
   );
-  console.assert(testCity.name === "TestCity", "City name test failed");
+  console.assert(testCity.name === 'TestCity', 'City name test failed');
   console.assert(
     testCity.population === 1000000,
-    "City population test failed"
+    'City population test failed'
   );
-  console.assert(testCity.area === 100, "City area test failed");
-  console.assert(testCity.density === 10000, "City density test failed");
+  console.assert(testCity.area === 100, 'City area test failed');
+  console.assert(testCity.density === 10000, 'City density test failed');
   console.assert(
-    testCity.country === "TestCountry",
-    "City country test failed"
+    testCity.country === 'TestCountry',
+    'City country test failed'
   );
 
   testCity.calculateDensityPercentage(20000);
   console.assert(
     testCity.densityPercentage === 50,
-    "City density percentage calculation test failed"
+    'City density percentage calculation test failed'
   );
 
   const cityString = testCity.toString();
   console.assert(
-    cityString.includes("TestCity") &&
-      cityString.includes("1000000") &&
-      cityString.includes("100") &&
-      cityString.includes("10000") &&
-      cityString.includes("TestCountry") &&
-      cityString.includes("50"),
-    "City toString test failed"
+    cityString.includes('TestCity') &&
+        cityString.includes('1000000') &&
+        cityString.includes('100') &&
+        cityString.includes('10000') &&
+        cityString.includes('TestCountry') &&
+        cityString.includes('50'),
+    'City toString test failed'
   );
 }
 
@@ -146,21 +145,26 @@ TestCity2,2000000,200,10000,TestCountry2`;
 
   console.assert(
     processor.cities.length === 2,
-    "CityDataProcessor cities count test failed"
+    'CityDataProcessor cities count test failed'
   );
   console.assert(
     processor.maxDensity === 10000,
-    "CityDataProcessor maxDensity test failed"
+    'CityDataProcessor maxDensity test failed'
   );
 
   processor.deleteLastCity();
   console.assert(
     processor.cities.length === 1,
-    "CityDataProcessor deleteLastCity test failed"
+    'CityDataProcessor deleteLastCity test failed'
   );
 
   const firstCity = processor.cities[0];
-  console.assert(firstCity.name === 'TestCity1' && firstCity.population === 1000000 && firstCity.area === 100 && firstCity.density === 10000 && firstCity.country === 'TestCountry1', 'CityDataProcessor city data test failed');
+  console.assert(firstCity.name === 'TestCity1' &&
+        firstCity.population === 1000000 &&
+        firstCity.area === 100 &&
+        firstCity.density === 10000 &&
+        firstCity.country === 'TestCountry1',
+  'CityDataProcessor city data test failed');
 }
 
 // Run tests
