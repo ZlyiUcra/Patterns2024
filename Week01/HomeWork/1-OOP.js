@@ -40,7 +40,6 @@ class CityDataProcessor {
     this.data = data;
     this.cities = [];
     this.maxDensity = 0;
-    this.processData();
   }
 
   processData() {
@@ -92,6 +91,7 @@ const cityData = `city,population,area,density,country
   Bangkok,8280925,1569,5279,Thailand`;
 
 const processedCities = new CityDataProcessor(cityData);
+processedCities.processData();
 processedCities.deleteLastCity();
 processedCities.printCities();
 
@@ -142,6 +142,7 @@ TestCity1,1000000,100,10000,TestCountry1
 TestCity2,2000000,200,10000,TestCountry2`;
 
   const processor = new CityDataProcessor(testData);
+  processor.processData();
 
   console.assert(
     processor.cities.length === 2,
